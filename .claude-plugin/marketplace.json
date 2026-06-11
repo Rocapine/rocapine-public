@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "rocapine-public",
+  "owner": {
+    "name": "Rocapine",
+    "email": "guillaume@rocapine.com",
+    "url": "https://rocapi.ne"
+  },
+  "metadata": {
+    "description": "Rocapine's public Claude Code plugins and skills, shared openly with the Expo / React Native community.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "expo-marketing-stack",
+      "source": "./expo-marketing-stack",
+      "version": "0.1.0",
+      "description": "Install and wire an opinionated Expo analytics/marketing stack (Superwall, RevenueCat, Amplitude, Adjust, Facebook, TikTok) into an Expo app, with a shared tracking plan and root-layout wiring. Bundles a working reference implementation; no API keys needed at install time."
+    }
+  ]
+}
