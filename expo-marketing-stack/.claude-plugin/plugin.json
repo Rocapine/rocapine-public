@@ -1,7 +1,7 @@
 {
   "name": "expo-marketing-stack",
-  "version": "0.1.0",
-  "description": "Install and wire Rocapine's opinionated analytics/marketing stack (Superwall, RevenueCat, Amplitude, Facebook, Adjust, TikTok) into an Expo app.",
+  "version": "0.2.0",
+  "description": "Install and wire Rocapine's opinionated analytics/marketing stack (Superwall, RevenueCat, Amplitude, Facebook, Adjust, TikTok) into an Expo app, or add just the TikTok Ads SDK and its campaign events to an existing one.",
   "author": {
     "name": "Rocapine",
     "email": "guillaume@rocapine.com"
