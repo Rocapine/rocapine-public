@@ -8,14 +8,14 @@
   },
   "metadata": {
     "description": "Rocapine's public Claude Code plugins and skills, shared openly with the Expo / React Native community.",
-    "version": "0.2.0"
+    "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "expo-marketing-stack",
       "source": "./expo-marketing-stack",
-      "version": "0.2.0",
-      "description": "Install and wire an opinionated Expo analytics/marketing stack (Superwall, RevenueCat, Amplitude, Adjust, Facebook, TikTok) into an Expo app, with a shared tracking plan and root-layout wiring. Bundles a working reference implementation; no API keys needed at install time. Also ships a standalone tiktok-ads-service skill for apps that only need TikTok Ads campaign events."
+      "version": "0.1.0",
+      "description": "Install and wire an opinionated Expo analytics/marketing stack (Superwall, RevenueCat, Amplitude, Adjust, Facebook, TikTok) into an Expo app, with a shared tracking plan and root-layout wiring. Bundles a working reference implementation; no API keys needed at install time."
     }
   ]
 }

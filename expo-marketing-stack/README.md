@@ -39,19 +39,6 @@ event names and properties stay consistent. Subscription state (`isPremium`,
 `skills/expo-marketing-stack/SKILL.md` and `references/wiring.md` for the full architecture and
 the exact wiring blocks.
 
-## Skills
-
-| Skill                  | Use it when                                                                                                                                                      |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `expo-marketing-stack` | Installing the whole stack above into an Expo app.                                                                                                               |
-| `tiktok-ads-service`   | The app already has its own analytics layer and only needs TikTok Ads: the `expo-tiktok-ads-events` SDK plus `complete_tutorial`, `start_trial` and `subscribe`. |
-
-For TikTok only, ask Claude to _"set up TikTok ads events"_ (or invoke `/tiktok-ads-service`). It
-adds a standalone `TikTokService` (bundled under `skills/tiktok-ads-service/assets/`), six
-per-platform `EXPO_PUBLIC_TIKTOK_*` env vars, parallel init next to the app's other analytics
-services, and the three funnel calls — then walks you through checking them in TikTok Events
-Manager.
-
 ## Maintenance
 
 The files under `skills/expo-marketing-stack/assets/` are a snapshot of a production Expo
