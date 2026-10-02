@@ -5,7 +5,6 @@ import Purchases, {
   STOREKIT_VERSION,
 } from "react-native-purchases";
 import { syncSubscriptionStatus } from "../tracking-plan";
-import { identify } from "./superwall.provider";
 
 export function revenueCatApiKey(): string {
   return (process.env.EXPO_PUBLIC_REVENUECAT_API_KEY ?? "").trim();
@@ -48,8 +47,6 @@ export const initialize = async (): Promise<void> => {
 export const postInitialize = async (): Promise<void> => {
   const apiKey = revenueCatApiKey();
   if (!apiKey) return;
-  const userId = await Purchases.getAppUserID();
-  await identify(userId);
   try {
     const customerInfo = await Purchases.getCustomerInfo();
     await syncSubscriptionStatus(customerInfo);
@@ -59,13 +56,10 @@ export const postInitialize = async (): Promise<void> => {
 };
 
 // RevenueCat-specific utilities
+// Never logIn with another id (Stripe customer, account, email): attach it via setAttributes.
 export const revenueCatUtils = {
   async getUserId(): Promise<string> {
     return await Purchases.getAppUserID();
-  },
-
-  async login(stripeCustomerId: string): Promise<void> {
-    await Purchases.logIn(stripeCustomerId);
   },
 
   async setAttributes(attributes: Record<string, string>): Promise<void> {
