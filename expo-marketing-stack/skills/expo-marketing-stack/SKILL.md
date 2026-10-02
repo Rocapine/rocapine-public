@@ -53,6 +53,11 @@ layout (`app/_layout.tsx` or equivalent). Determine:
   paths.
 - **Source layout.** If the project keeps code under `src/`, place the copied folders under
   `src/` and keep the alias consistent.
+- **Rocapine app-template projects.** If `services/analytics/providers/rocalytics.provider.ts`
+  exists (apps created with `rocapine create`), the stack is already installed and owns the user
+  identity: do **not** copy the asset files over it. Add only what is missing (e.g. the TikTok
+  provider) by merging into the existing files, and keep `rocalytics.getRocaIdentity()` /
+  `rocalytics.postInitialize(rocaId)` in `initialize()` exactly where they are.
 - **Existing conflicts.** If the project already has any of these SDKs initialized elsewhere
   (e.g. an existing `Purchases.configure` call or Amplitude init), plan to remove/merge the old
   init — double initialization causes subtle bugs (duplicate events, listener leaks).
@@ -157,3 +162,9 @@ must be called from the app's own screens — the skill cannot guess where those
 - **`trial_started` / `direct_subscription`** fire alongside `user_converted` on every purchase —
   they exist so Adjust/Facebook/TikTok can route attribution through platform-specific tokens.
   Don't "deduplicate" them.
+- **User identity**: the stack never calls `Superwall.identify` or `Purchases.logIn`; Superwall and
+  RevenueCat each keep their own anonymous id. Never identify one SDK with another SDK's id
+  (RevenueCat's `$RCAnonymousID:…` in particular): Superwall treats any switch from one id to a
+  different id as a new login, resets the SDK, and its subscription status reads INACTIVE until
+  the next StoreKit check, so `no_active_entitlements` paywalls show to users mid-trial. If the
+  app needs a shared id, pick one stable id, set it once on both SDKs, and never replace it.
